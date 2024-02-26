@@ -10,5 +10,16 @@ public class Main {
         int result3 = result2 + Integer.parseInt("FF", 16);
         int finalresult = result3 * 6;
         System.out.println(finalresult);
+        int sum=finalresult;
+        while (finalresult > 0 || sum > 9) {
+            if (finalresult == 0) {
+                finalresult = sum;
+                sum = 0;
+            }
+            sum += finalresult % 10;
+            finalresult /= 10;
+        }
+        System.out.println(sum);
+        System.out.println("Willy-nilly, this semester I will learn " +languages[sum]);
     }
 }
