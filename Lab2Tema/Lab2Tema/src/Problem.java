@@ -41,7 +41,7 @@ public class Problem {
         }
     }
     public void allocateClients() {
-        // Sort vehicles by remaining capacity in descending order
+
         vehicles.sort(Comparator.comparingDouble(Vehicle::getRemainingCapacity).reversed());
 
         // Assign clients to vehicles

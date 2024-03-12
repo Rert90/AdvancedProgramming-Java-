@@ -1,0 +1,3 @@
+interface Visitable {
+    void visit();
+}

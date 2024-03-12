@@ -26,7 +26,7 @@ public class Drone extends Vehicle{
         return Objects.hash(super.hashCode(), maxFlightDuration);
     }
     public double getRemainingCapacity() {
-        // Drones don't have a capacity, so we return a placeholder value
+
         return Double.POSITIVE_INFINITY;
     }
 }

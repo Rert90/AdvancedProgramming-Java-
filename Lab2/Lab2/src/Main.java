@@ -3,6 +3,7 @@ class Depot{
 public Depot(String name){
     this.name=name;
 }
+
     public String getName() {
         return name;
     }
@@ -12,9 +13,7 @@ public Depot(String name){
 
     @Override
     public String toString() {
-        return "Depot{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Depot{" + "name='" + name + '\'' + '}';
     }
 }
 class Vehicle{
@@ -33,9 +32,7 @@ class Vehicle{
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-                "plateNumber='" + plateNumber + '\'' +
-                '}';
+        return "Vehicle{" + "plateNumber='" + plateNumber + '\'' + '}';
     }
 }
 
@@ -47,10 +44,12 @@ enum ClientType{
 class Client{
     private String name;
     private ClientType type;
+    private String visitingTime;
 
-    public Client(String name, ClientType type) {
+    public Client(String name, ClientType type,String visitingTime) {
         this.name = name;
         this.type = type;
+        this.visitingTime=visitingTime;
     }
 
     public void setName(String name) {
@@ -63,9 +62,7 @@ class Client{
 
     @Override
     public String toString() {
-        return "Client{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Client{" + "name='" + name + '\'' + ", type=" + type + ", visitingTime='" + visitingTime + '\'' + '}';
     }
 }
 
@@ -74,10 +71,8 @@ public class Main {
     public static void main(String[] args) {
         Depot depot = new Depot("Depot");
         Vehicle vehicle = new Vehicle("is12tst");
-        Client regularClient = new Client("Hatz", ClientType.REGULAR);
-        Client premiumClient = new Client("gIaNi", ClientType.PREMIUM);
-
-        // Print the objects
+        Client regularClient = new Client("Hatz", ClientType.REGULAR,"9-12");
+        Client premiumClient = new Client("gIaNi", ClientType.PREMIUM,"8-16");
         System.out.println(depot);
         System.out.println(vehicle);
         System.out.println(regularClient);
