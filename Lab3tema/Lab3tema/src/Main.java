@@ -19,9 +19,8 @@ public class Main {
         statueNY.put(LocalDate.now(), new Pair<>(LocalTime.of(2,2),LocalTime.of(19,2)));
         Statue statue1 = new Statue("NuMaiStiuStatue","aia e",statueNY);
 
-        // Create a trip
         LocalDate startDate = LocalDate.now();
-        LocalDate endDate = startDate.plusDays(7);
+        LocalDate endDate = startDate.plusDays(6);
         List<Attraction> attractions = new ArrayList<>();
         attractions.add(statue1);
         attractions.add(statue);
@@ -29,7 +28,6 @@ public class Main {
         attractions.add(concert);
         Trip trip = new Trip(startDate, attractions);
 
-        // Display visitable locations that are not payable, sorted by opening hour
         trip.displayVisitableNotPayableLocations();
 
         // Create a travel plan
@@ -37,20 +35,19 @@ public class Main {
         LocalDate currentDate = startDate;
         while (!currentDate.isAfter(endDate)) {
             List<Attraction> dailyAttractions = new ArrayList<>();
-            // Create new instances of attractions for each day
+
             Map<LocalDate, Pair<LocalTime, LocalTime>> statueTimetableForDay = new HashMap<>();
-            statueTimetableForDay.put(currentDate, new Pair<>(LocalTime.of(10, 30), LocalTime.of(18, 0))); // Example opening hours for today
+            statueTimetableForDay.put(currentDate, new Pair<>(LocalTime.of(10, 30), LocalTime.of(18, 0)));
             Statue statueForDay = new Statue("Statue of Liberty", "Symbol of freedom", statueTimetableForDay);
 
             Map<LocalDate, Pair<LocalTime, LocalTime>> notreDameTimetableForDay = new HashMap<>();
-            notreDameTimetableForDay.put(currentDate, new Pair<>(LocalTime.of(8, 19), LocalTime.of(19, 0))); // Example opening hours for today
+            notreDameTimetableForDay.put(currentDate, new Pair<>(LocalTime.of(8, 19), LocalTime.of(19, 0)));
             Church notreDameForDay = new Church("Notre Dame Cathedral", "Gothic masterpiece", notreDameTimetableForDay, 10.0);
 
             Map<LocalDate, Pair<LocalTime, LocalTime>> concertTimetableForDay = new HashMap<>();
-            concertTimetableForDay.put(currentDate, new Pair<>(LocalTime.of(20, 0), LocalTime.of(23, 0))); // Example opening hours for today
+            concertTimetableForDay.put(currentDate, new Pair<>(LocalTime.of(20, 0), LocalTime.of(23, 0)));
             Concert concertForDay = new Concert("Concert Hall", "Live music performances", concertTimetableForDay, 25.0);
 
-            // Add attractions to the daily list
             dailyAttractions.add(statueForDay);
             dailyAttractions.add(notreDameForDay);
             dailyAttractions.add(concertForDay);
@@ -60,8 +57,6 @@ public class Main {
             currentDate = currentDate.plusDays(1);
         }
 
-
-        // Print the travel plan
         TravelPlan travelPlan = new TravelPlan(plan);
         travelPlan.printPlan();
     }
