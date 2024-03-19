@@ -11,7 +11,6 @@ public class Driver extends Person {
         return destination;
     }
 
-    // Override toString to include destination information
     @Override
     public String toString() {
         return super.getName() + " - Age: " + super.getAge() + " - Destination: " + destination;

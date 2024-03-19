@@ -13,7 +13,6 @@ public class Main {
                 .mapToObj(i -> new Person("Person" + i, (int) (Math.random() * 50) + 18))
                 .collect(Collectors.toSet());
 
-        // Filter persons into drivers and passengers
         LinkedList<Driver> drivers = persons.stream()
                 .filter(person-> person.hasDriverLicense() &&  Math.random() < 0.5)
                 .map(person -> new Driver(person.getName(), person.getAge(), "Destination" + ((int) (Math.random() * 5) + 1)))

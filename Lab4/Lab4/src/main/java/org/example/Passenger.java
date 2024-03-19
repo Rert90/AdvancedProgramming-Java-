@@ -1,7 +1,4 @@
-// Passenger.java
 package org.example;
-
-import java.util.Map;
 
 public class Passenger extends Person implements Comparable<Passenger> {
     private String destination;
