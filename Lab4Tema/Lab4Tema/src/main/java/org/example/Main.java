@@ -8,9 +8,9 @@ public class Main {
     public static void main(String[] args) {
         Faker faker = new Faker();
 
-        List<Destination> destinations = generateFakeDestinations(faker, 7);
+        List<Destination> destinations = generateFakeDestinations(faker, 3);
 
-        List<Person> people = generateFakePeople(faker, 20, 0.3, destinations);
+        List<Person> people = generateFakePeople(faker, 10, 0.3, destinations);
 
         System.out.println("Generated People:");
         for (Person person : people) {
@@ -28,7 +28,6 @@ public class Main {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
-        // Match drivers and passengers
         Map<Person, List<Person>> matches = problem.matchDriversAndPassengers();
         System.out.println("\nMatches: " + matches);
     }
@@ -54,9 +53,9 @@ public class Main {
             String name = faker.name().fullName();
             String destination;
 
-            if (random.nextDouble() < 0.7 && destinations.size() > 0) { // 70% chance of selecting a random destination from the list
+            if (random.nextDouble() < 0.7 && destinations.size() > 0) {
                 destination = destinations.get(random.nextInt(destinations.size())).getName();
-            } else { // 30% chance of generating a new random destination
+            } else {
                 destination = faker.address().city();
             }
             String role = faker.bool().bool() ? "driver" : "passenger";
