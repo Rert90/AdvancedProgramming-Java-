@@ -1,12 +1,32 @@
 package org.example;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.io.File;
 
+// Command for viewing a document
 public class ViewCommand implements Command {
+    private String filePath;
+
+    public ViewCommand(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
     @Override
-    public void execute(DocumentRepository repository, String[] args) throws IOException, InvalidCommandException {
-        if (args.length != 3) {
-            throw new InvalidCommandException("Invalid arguments for view command.");
+    public void execute() throws IOException {
+        if (filePath == null || filePath.isEmpty()) {
+            System.out.println("Error: File path is missing.");
+            return;
         }
-        repository.viewDocument(args[1], args[2]);
+
+        File file = new File(filePath);
+        if (!file.exists()) {
+            throw new IOException("File not found: " + filePath);
+        }
+
+        Desktop.getDesktop().open(file);
     }
 }

@@ -1,7 +1,7 @@
 package org.example;
-
 import java.io.IOException;
 
+// Interface for commands
 public interface Command {
-    void execute(DocumentRepository repository, String[] args) throws IOException, InvalidCommandException;
+    void execute() throws InvalidCommandException, IOException;
 }
