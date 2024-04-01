@@ -22,7 +22,7 @@ public class ReportCommand implements Command {
     @Override
     public void execute() throws IOException {
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_31);
-        configuration.setDirectoryForTemplateLoading(new File("C:\\Users\\rober\\IdeaProjects\\AdvancedProgramming-Java-\\Lab5Tema\\templates"));
+        configuration.setDirectoryForTemplateLoading(new File("/Users/olariurobert/IdeaProjects/AdvancedProgramming/AdvancedProgramming-Java-/Lab5Tema/templates"));
         configuration.setDefaultEncoding("UTF-8");
 
 
