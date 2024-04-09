@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.1</version> <!-- or the latest version -->
+            <version>2.13.1</version>
         </dependency>
 
         <dependency>
@@ -26,6 +26,51 @@
         <version>2.3.31</version>
     </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>16</release>
+                    <executable>javac</executable>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <mainClass>Main</mainClass>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>--module-path</argument>
+                        <argument>${java.home}/lib/javafx.base.jar;${java.home}/lib/javafx.controls.jar;${java.home}/lib/javafx.fxml.jar;${java.home}/lib/javafx.graphics.jar;${java.home}/lib/javafx.media.jar;${java.home}/lib/javafx.swing.jar;${java.home}/lib/javafx.web.jar</argument>
+                        <argument>--add-modules</argument>
+                        <argument>javafx.controls,javafx.fxml</argument>
+                        <argument>-cp</argument>
+                        <argument>${project.build.outputDirectory}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>
+                                 org.example.Lab5Tema</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 
 </project>

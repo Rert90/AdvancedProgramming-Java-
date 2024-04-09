@@ -26,14 +26,11 @@ public class ReportCommand implements Command {
         configuration.setDefaultEncoding("UTF-8");
 
 
-        // Create data model
         Map<String, Object> data = new HashMap<>();
         data.put("files", repositoryManager.getFiles());
 
-        // Get template
         Template template = configuration.getTemplate("report_template.ftl");
 
-        // Process template
         StringWriter stringWriter = new StringWriter();
         try {
             template.process(data, stringWriter);
