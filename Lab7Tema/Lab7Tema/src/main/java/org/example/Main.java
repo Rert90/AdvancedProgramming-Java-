@@ -4,11 +4,11 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
-        int n = 5;
-        int numPlayers = 4;
-        long timeLimitMillis = TimeUnit.MINUTES.toMillis(5);
+        int n = 10;
+        int numPlayers = 3;
+        long timeLimitMillis = TimeUnit.MINUTES.toMillis(2);
 
-        TokenBag tokenBag = new TokenBag(n);
+        TokenBag tokenBag = new TokenBag(n,numPlayers);
         TimeKeeper timekeeper = new TimeKeeper(timeLimitMillis);
         timekeeper.start();
 
